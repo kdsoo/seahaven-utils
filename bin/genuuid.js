@@ -5,7 +5,7 @@ var servicedomain = "https://www.seahaven.xyz/";
 var path = require('path')
 
 if (process.argv.length < 3) {
-	console.error('Usage: %s "service name" <option>', path.basename(process.argv[1]))
+	console.error('Usage: %s "service name" <option: -v (verbose)>', path.basename(process.argv[1]))
 		process.exit(1)
 }
 var name = process.argv[2];
