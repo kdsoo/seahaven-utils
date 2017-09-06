@@ -15,7 +15,7 @@ UUID.v3({
 	namespace: UUID.namespace.url,
 	name: servicedomain
 }, function (err, result) {
-	if (verbose {
+	if (verbose) {
 		console.log("Service namespace for name " + name + ": " + result);
 		console.log(UUID.check(result));
 	}
