@@ -1,4 +1,8 @@
 {
+	"uuid": {
+		"servicedomain": "https://www.seahaven.xyz/",
+		"devicedomain": "seahaven:device"
+	},
 	"webpush": {
 		"notify": "https://kdsoo.no-ip.biz/webpush/notify/",
 		"auth": ""

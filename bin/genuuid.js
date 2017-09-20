@@ -1,19 +1,29 @@
 #!/usr/bin/env node
 
 var UUID = require('uuid-1345');
-var servicedomain = "https://www.seahaven.xyz/";
+var config = require('config');
+var servicedomain = config.get("uuid.servicedomain");
+var devicedomain = config.get("uuid.devicedomain");
 var path = require('path')
 
 if (process.argv.length < 3) {
-	console.error('Usage: %s "service name" <option: -v (verbose)>', path.basename(process.argv[1]))
+	console.error('Usage: %s category(service|device) "service name" <option: -v (verbose)>', path.basename(process.argv[1]))
 		process.exit(1)
 }
-var name = process.argv[2];
-var verbose = process.argv[3] == "-v" ? true:false;
+var category = process.argv[2];
+if (category == "service") {
+	category = servicedomain;
+} else if (category == "device") {
+} else {
+	console.error("Only 'service' or 'device' category accepted");
+	process.exit();
+}
+var name = process.argv[3];
+var verbose = process.argv[4] == "-v" ? true:false;
 
 UUID.v3({
 	namespace: UUID.namespace.url,
-	name: servicedomain
+	name: category
 }, function (err, result) {
 	if (verbose) {
 		console.log("Service namespace for name " + name + ": " + result);
