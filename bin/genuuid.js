@@ -4,18 +4,22 @@ var UUID = require('uuid-1345');
 var config = require('config');
 var servicedomain = config.get("uuid.servicedomain");
 var devicedomain = config.get("uuid.devicedomain");
+var userdomain = config.get("uuid.userdomain");
 var path = require('path')
 
 if (process.argv.length < 3) {
-	console.error('Usage: %s category(service|device) "service name" <option: -v (verbose)>', path.basename(process.argv[1]))
+	console.error('Usage: %s category(service|device|user) "name" <option: -v (verbose)>', path.basename(process.argv[1]))
 		process.exit(1)
 }
 var category = process.argv[2];
 if (category == "service") {
 	category = servicedomain;
 } else if (category == "device") {
+	category = devicedomain;
+} else if (category == "user") {
+	category = userdomain;
 } else {
-	console.error("Only 'service' or 'device' category accepted");
+	console.error("Only 'service', 'device' or 'user' category accepted");
 	process.exit();
 }
 var name = process.argv[3];
