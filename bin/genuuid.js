@@ -13,10 +13,13 @@ if (process.argv.length < 3) {
 }
 var category = process.argv[2];
 if (category == "service") {
+	namespace = UUID.namespace.url;
 	category = servicedomain;
 } else if (category == "device") {
+	namespace = UUID.namespace.oid;
 	category = devicedomain;
 } else if (category == "user") {
+	namespace = UUID.namespace.oid;
 	category = userdomain;
 } else {
 	console.error("Only 'service', 'device' or 'user' category accepted");
@@ -26,7 +29,7 @@ var name = process.argv[3];
 var verbose = process.argv[4] == "-v" ? true:false;
 
 UUID.v3({
-	namespace: UUID.namespace.url,
+	namespace: namespace,
 	name: category
 }, function (err, result) {
 	if (verbose) {
