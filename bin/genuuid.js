@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
+var path = require('path')
+process.env['NODE_CONFIG_DIR'] = path.join(__dirname, "..", "config");
 var UUID = require('uuid-1345');
 var config = require('config');
 var servicedomain = config.get("uuid.servicedomain");
 var devicedomain = config.get("uuid.devicedomain");
 var userdomain = config.get("uuid.userdomain");
-var path = require('path')
 
 if (process.argv.length < 3) {
 	console.error('Usage: %s category(service|device|user) "name" <option: -v (verbose)>', path.basename(process.argv[1]))

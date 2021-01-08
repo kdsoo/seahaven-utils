@@ -9,7 +9,6 @@
     "neo4j": "2.0.0-RC2",
     "socket.io": "*",
     "node-ssdp": "3.1.0",
-    "mongodb": "*",
     "request": "*",
     "multicast-dns": "*",
     "web-push": "*",
